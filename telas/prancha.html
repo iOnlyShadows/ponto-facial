@@ -1,0 +1,114 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box} body{margin:0;font-family:'IBM Plex Sans',sans-serif;color:#151A21}
+
+    body{background:#E6E7EA;width:3200px;padding:120px}
+    header{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:56px;margin-bottom:72px;border-bottom:2px solid #C9CFD6}
+    header h1{margin:0;font-size:64px;font-weight:600;letter-spacing:-.02em;max-width:1700px;line-height:1.1}
+    header .sub{margin-top:18px;font-size:26px;color:#5B6672}
+    header dl{display:grid;grid-template-columns:auto auto;gap:10px 28px;margin:0;font-size:21px}
+    header dt{color:#5B6672} header dd{margin:0;font-weight:500}
+    .fluxo{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:96px}
+    .fluxo span{background:#fff;border:1px solid #C9CFD6;border-radius:999px;padding:12px 22px;font-size:21px}
+    .fluxo i{font-style:normal;color:#8C96A1;font-size:21px;align-self:center}
+    .sec{margin-bottom:120px}
+    .sec-h{margin-bottom:40px} .sec-h h2{margin:0;font-size:40px;font-weight:600} .sec-h p{margin:8px 0 0;font-size:22px;color:#5B6672}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:72px 56px}
+    figure{margin:0}
+    figcaption{font-size:20px;font-weight:500;color:#3B434D;margin-bottom:14px;display:flex;align-items:center;gap:12px}
+    .num{font-family:'IBM Plex Mono',monospace;font-size:17px;background:#151A21;color:#fff;border-radius:6px;padding:3px 9px}
+    figure img{width:100%;display:block;border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 12px 32px rgba(21,26,33,.14)}
+    figure p{margin:16px 0 0;font-size:18px;line-height:1.45;color:#5B6672}
+    </style></head><body>
+    <header>
+      <div><h1>Sistema de Registro de Ponto com Reconhecimento Facial</h1><div class="sub">Protótipo de telas · 14 telas e estados</div></div>
+      <dl><dt>Frontend</dt><dd>React</dd><dt>Backend</dt><dd>Python (API)</dd><dt>Reconhecimento</dt><dd>DeepFace</dd><dt>Resolução</dt><dd>1440 × 900</dd></dl>
+    </header>
+    <div class="fluxo"><span>Cadastro do funcionário</span><i>→</i><span>Captura da foto</span><i>→</i><span>Armazenamento dos dados</span><i>→</i><span>Captura facial no ponto</span><i>→</i><span>DeepFace compara</span><i>→</i><span>Funcionário identificado</span><i>→</i><span>Data e horário gravados</span></div>
+    
+    <section class="sec">
+      <div class="sec-h"><h2>Registrar ponto</h2><p>Terminal tipo quiosque na entrada da empresa. O funcionário olha para a câmera e toca em um botão.</p></div>
+      <div class="grid">
+        <figure>
+          <figcaption><span class="num">01</span>Aguardando</figcaption>
+          <img src="png/01-ponto-aguardando.png">
+          <p>Câmera ativa e moldura de enquadramento. O tipo "Automático" segue a sequência do dia.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">02</span>Processando</figcaption>
+          <img src="png/02-ponto-processando.png">
+          <p>Imagem enviada para a API em Python; o DeepFace compara o rosto com os cadastrados.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">03</span>Reconhecido</figcaption>
+          <img src="png/03-ponto-reconhecido.png">
+          <p>Funcionário identificado: nome, cargo, tipo e horário gravados no banco, com o nível de confiança.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">04</span>Não reconhecido</figcaption>
+          <img src="png/04-ponto-nao-reconhecido.png">
+          <p>Nenhum cadastro próximo o suficiente do rosto capturado.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">05</span>Nenhum rosto detectado</figcaption>
+          <img src="png/05-ponto-nenhum-rosto.png">
+          <p>Orienta o funcionário a se posicionar de frente para a câmera.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">06</span>Mais de um rosto</figcaption>
+          <img src="png/06-ponto-mais-de-um-rosto.png">
+          <p>O registro é individual; pede para os demais saírem do enquadramento.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">07</span>Modo quiosque</figcaption>
+          <img src="png/07-ponto-modo-quiosque.png">
+          <p>Tela cheia, sem menu, para o tablet fixo na parede.</p>
+        </figure>
+      </div>
+    </section>
+    <section class="sec">
+      <div class="sec-h"><h2>Cadastro de funcionário</h2><p>Nome, matrícula, cargo e a foto de referência usada pelo reconhecimento facial.</p></div>
+      <div class="grid">
+        <figure>
+          <figcaption><span class="num">08</span>Formulário vazio</figcaption>
+          <img src="png/08-cadastro-inicial.png">
+          <p>Câmera ao vivo para capturar a foto de referência e lista dos cadastrados.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">09</span>Validação</figcaption>
+          <img src="png/09-cadastro-validacao.png">
+          <p>Campos obrigatórios, matrícula já cadastrada e foto ausente.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">10</span>Foto capturada</figcaption>
+          <img src="png/10-cadastro-foto-capturada.png">
+          <p>Foto congelada com opção de refazer antes de cadastrar.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">11</span>Cadastro concluído</figcaption>
+          <img src="png/11-cadastro-sucesso.png">
+          <p>Funcionário entra na lista e já pode registrar o ponto.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">12</span>Confirmar exclusão</figcaption>
+          <img src="png/12-cadastro-confirmar-exclusao.png">
+          <p>Remove o funcionário mantendo os registros antigos no histórico.</p>
+        </figure>
+      </div>
+    </section>
+    <section class="sec">
+      <div class="sec-h"><h2>Histórico de registros</h2><p>Consulta das marcações por data, com busca por nome ou matrícula.</p></div>
+      <div class="grid">
+        <figure>
+          <figcaption><span class="num">13</span>Registros do dia</figcaption>
+          <img src="png/13-historico-hoje.png">
+          <p>Resumo de quem entrou, está em intervalo e já saiu, e a lista de marcações.</p>
+        </figure>
+        <figure>
+          <figcaption><span class="num">14</span>Busca sem resultado</figcaption>
+          <img src="png/14-historico-sem-resultado.png">
+          <p>Estado vazio quando a busca não encontra ninguém.</p>
+        </figure>
+      </div>
+    </section>
+  </body></html>

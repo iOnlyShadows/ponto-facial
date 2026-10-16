@@ -1,0 +1,15 @@
+# Python
+backend/.venv/
+__pycache__/
+backend/ponto.db
+backend/teste.db
+backend/fotos/
+backend/fotos_teste/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Arquivos gerados
+design/export/
+telas/teste-interface/

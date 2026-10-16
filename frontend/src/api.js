@@ -15,7 +15,8 @@ async function req(url, options = {}) {
   const dados = await resp.json().catch(() => ({}))
   if (!resp.ok) {
     const e = new Error(dados.mensagem || 'Erro inesperado no servidor.')
-    e.codigo = dados.codigo || (resp.status === 502 || resp.status === 504 ? 'offline' : 'erro')
+    // Sem mensagem da API e erro 5xx = o proxy do Vite não alcançou a API (ela está desligada)
+    e.codigo = dados.codigo || (resp.status >= 500 && !dados.mensagem ? 'offline' : 'erro')
     if (e.codigo === 'offline') e.message = 'Não foi possível falar com o servidor. Verifique se a API está rodando.'
     throw e
   }

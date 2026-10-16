@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { api } from '../api'
 import Camera from '../components/Camera'
 import Avatar from '../components/Avatar'
+import { useEspelho } from '../espelho'
 
 const CARGOS = ['Analista de RH', 'Auxiliar Administrativo', 'Vendedora', 'Vendedor', 'Estoquista', 'Gerente', 'Recepcionista']
 const VAZIO = { nome: '', matricula: '', cargo: '' }
@@ -19,6 +20,7 @@ export default function Cadastro() {
   const [carregando, setCarregando] = useState(true)
   const [erroLista, setErroLista] = useState(null)
   const [excluindo, setExcluindo] = useState(null)
+  const [espelhar] = useEspelho()
 
   async function carregar() {
     try {
@@ -158,7 +160,7 @@ export default function Cadastro() {
               <div className={'foto-quadro ' + (fotoRuim ? 'invalido' : '')}>
                 {foto ? (
                   <>
-                    <img src={foto} alt="Foto capturada" className="espelhada" />
+                    <img src={foto} alt="Foto capturada" className={espelhar ? 'espelhada' : ''} />
                     <div className="etiqueta-foto">{etiqueta}</div>
                   </>
                 ) : (
